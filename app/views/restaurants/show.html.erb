@@ -1,0 +1,91 @@
+<div class="show_background" style="background-image: url(<%= asset_path 'showpage.jpg' %>)" %>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.5/lumen/bootstrap.css"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.5/lumen/bootstrap.min.css"></script>
+ 
+ <div class="padding">
+  <div class="results-container">
+    <div class="results">
+      <ul class="nav nav-tabs">
+        <li class="active"><a href="#home" data-toggle="tab">Overview</a></li>
+        <li><a href="#profile" data-toggle="tab">Inspection Results</a></li>
+       
+      </ul>
+
+      <!-- OVERVIEW OF RESTAURANT -->
+      <div id="myTabContent" class="tab-content">
+        <div class="tab-pane fade active in" id="home">
+           <p>
+            <strong>Name:</strong>
+
+            <%= @result.first.restaurant_name %>
+          </p>
+          
+          <p>
+            <strong>Cuisine:</strong>
+            <%= @result.first.cuisine_description %>
+          </p>
+
+
+          <p>
+            <strong>Inspection date:</strong>
+            <%= @result.first.inspection_date %>
+          </p>
+
+
+          <p>
+            <strong>Grade:</strong>
+            <%= @result.first.grade %>
+          </p>
+
+           <p>
+            <strong>Address:</strong>
+            <%= @result.first.building %>
+            <%= @result.first.street %>
+            <%= @result.first.zipcode %>
+            <%= @result.first.boro %>
+          </p>
+           
+          <p>
+            <strong>Phone:</strong>
+            <%= @result.first.phone_num %>
+          </p>
+          <br><br>
+        </div>
+
+
+        <!-- INSPECTION RESULTS -->
+        <div class="tab-pane fade" id="profile">
+          <p>
+            <strong>Violation(s):</strong>
+            <ul>
+              <% @result.first.inspection_results.each do |violation| %>
+              <ul>
+                <%= violation %>
+              </ul>
+              <br>
+              <% end %>
+            </ul>
+          </p>
+
+
+          <p>
+            <strong>Violation Code(s):</strong>
+            <%= @result.first.violation_codes.first %>
+          </p>
+          <br><br>
+
+        </div>
+
+
+        <div class="tab-pane fade" id="dropdown1">
+          <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork.</p>
+        </div>
+        <div class="tab-pane fade" id="dropdown2">
+          <p>Trust fund seitan letterpress, keytar raw denim keffiyeh etsy art party before they sold out master cleanse gluten-free squid scenester freegan cosby sweater. Fanny pack portland seitan DIY, art party locavore wolf cliche high life echo park Austin. Cred vinyl keffiyeh DIY salvia PBR, banh mi before they sold out farm-to-table VHS viral locavore cosby sweater.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

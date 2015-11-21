@@ -1,0 +1,69 @@
+<div class="welcome_background" style="background-image: url(<%= asset_path 'showpage.jpg' %>)" %>
+
+<p id="notice"><%= notice %></p>
+
+<strong>You had mulitple results...</strong>
+<ul>
+    
+    <% @result.each do |restaurant| %>
+    <p>
+      <br>
+      
+      <p>
+        <strong>Name:</strong>
+        <%= restaurant.restaurant_name %>
+      </p>
+
+      <p>
+        <strong>Grade:</strong>
+        <%= restaurant.grade %>
+      </p>
+
+      <p>
+        <strong>Inspection_date:</strong>
+        <%= restaurant.inspection_date %>
+      </p>
+
+      <p>
+        <strong>Cuisine:</strong>
+        <%= restaurant.cuisine_description %>
+      </p>
+
+      <p>
+        <strong>Violation(s):</strong>
+      
+        <% restaurant.inspection_results.each do |violation| %>
+        <li>
+          <%= violation %>
+        </li>
+        <% end %>
+      </p>
+      
+      <p>
+        <strong>Violation Code(s):</strong>
+        <%= restaurant.violation_codes %>
+      </p>
+
+      
+      <p>
+        <strong>Address:</strong>
+        <%= restaurant.building %>
+        <%= restaurant.street %>
+        <%= restaurant.boro %>
+        <%= restaurant.zipcode %>
+      </p>
+      
+      <p>
+        <strong>Phone:</strong>
+        <%= restaurant.phone_num %>
+      </p>
+    
+    </p>
+    
+    
+    <%end%>
+  </ul>
+
+
+   
+    
