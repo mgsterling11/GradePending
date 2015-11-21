@@ -29,6 +29,7 @@ gem 'rest-client'
 gem 'bootstrap-sass'
 gem "bcrypt-ruby", :require => "bcrypt"
 gem 'time_diff'
+gem 'yelp', require: 'yelp'
 
 gem 'twitter-bootswatch-rails', '~> 3.3.4'
 gem 'twitter-bootswatch-rails-helpers'

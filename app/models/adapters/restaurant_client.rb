@@ -52,7 +52,7 @@ module Adapters
         restaurant_name = restaurant_name(restaurant)                                               
         phone_num = phone_num(restaurant)    
         street = street(restaurant)                                               
-        violation_codes = violation_codes(restaurant)
+        violation_codes = violation_codes(restaurant) 
         zipcode = zipcode(restaurant)                                               
         grade = grade(restaurant)
         Restaurant.new(boro, building, grade, cuisine_description, restaurant_name, inspection_date, phone_num, street, violation_codes, inspection_results, zipcode)

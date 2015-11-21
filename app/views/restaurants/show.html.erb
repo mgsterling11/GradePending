@@ -10,6 +10,7 @@
       <ul class="nav nav-tabs">
         <li class="active"><a href="#home" data-toggle="tab">Overview</a></li>
         <li><a href="#profile" data-toggle="tab">Inspection Results</a></li>
+        <li><a href="#map" data-toggle="tab">View Map</a></li>
        
       </ul>
 
@@ -30,13 +31,13 @@
 
           <p>
             <strong>Inspection date:</strong>
-            <%= @result.first.inspection_date %>
+            <%= @result.first.inspection_date[0] %>
           </p>
 
 
           <p>
             <strong>Grade:</strong>
-            <%= @result.first.grade %>
+            <%= @result.first.grade[0] %>
           </p>
 
            <p>
@@ -72,11 +73,24 @@
 
           <p>
             <strong>Violation Code(s):</strong>
-            <%= @result.first.violation_codes.first %>
+            <%= @result.first.violation_codes.join(", ") %>
           </p>
           <br><br>
 
         </div>
+
+
+      <div class="tab-pane fade" id="map">
+    
+        <iframe
+          width="600"
+          height="450"
+          frameborder="0" style="border:0"
+          src="https://www.google.com/maps/embed/v1/place?key=AIzaSyD6AHICy-KKBR2oipdWqk1wYu030qMeYfw&q=<%=@result.first.restaurant_name%> restaurant new york" allowfullscreen>
+        </iframe>
+
+      </div>
+
 
 
         <div class="tab-pane fade" id="dropdown1">

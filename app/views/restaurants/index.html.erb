@@ -1,69 +1,111 @@
-<div class="welcome_background" style="background-image: url(<%= asset_path 'showpage.jpg' %>)" %>
+<div class="show_background" style="background-image: url(<%= asset_path 'showpage.jpg' %>)" %>
 
-<p id="notice"><%= notice %></p>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.5/lumen/bootstrap.css"></script>
 
-<strong>You had mulitple results...</strong>
-<ul>
-    
-    <% @result.each do |restaurant| %>
-    <p>
-      <br>
-      
-      <p>
-        <strong>Name:</strong>
-        <%= restaurant.restaurant_name %>
-      </p>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.5/lumen/bootstrap.min.css"></script>
+ 
 
-      <p>
-        <strong>Grade:</strong>
-        <%= restaurant.grade %>
-      </p>
+ <div class="padding">
+  <div class="results-container">
+    <div class="results">
+      <ul class="nav nav-tabs">
+        <li class="active"><a href="#home" data-toggle="tab">Overview</a></li>
+        <li><a href="#profile" data-toggle="tab">Inspection Results</a></li>      
+        <li><a href="#map" data-toggle="tab">View Map</a></li>
+      </ul>
 
-      <p>
-        <strong>Inspection_date:</strong>
-        <%= restaurant.inspection_date %>
-      </p>
+ 
+  <% @result.each do |restaurant| %>  
 
-      <p>
-        <strong>Cuisine:</strong>
-        <%= restaurant.cuisine_description %>
-      </p>
+      <!-- OVERVIEW OF RESTAURANT -->
+      <div id="myTabContent" class="tab-content">
+        <div class="tab-pane fade active in" id="home">
+           <p>
+            <strong>Name:</strong>
 
-      <p>
-        <strong>Violation(s):</strong>
-      
-        <% restaurant.inspection_results.each do |violation| %>
-        <li>
-          <%= violation %>
-        </li>
-        <% end %>
-      </p>
-      
-      <p>
-        <strong>Violation Code(s):</strong>
-        <%= restaurant.violation_codes %>
-      </p>
+            <%= restaurant.restaurant_name %>
+          </p>
+          
+          <p>
+            <strong>Cuisine:</strong>
+            <%= restaurant.cuisine_description %>
+          </p>
 
-      
-      <p>
-        <strong>Address:</strong>
-        <%= restaurant.building %>
-        <%= restaurant.street %>
-        <%= restaurant.boro %>
-        <%= restaurant.zipcode %>
-      </p>
-      
-      <p>
-        <strong>Phone:</strong>
-        <%= restaurant.phone_num %>
-      </p>
-    
-    </p>
-    
-    
+
+          <p>
+            <strong>Inspection date:</strong>
+            <%= restaurant.inspection_date %>
+          </p>
+
+
+          <p>
+            <strong>Grade:</strong>
+            <%= restaurant.grade %>
+          </p>
+
+           <p>
+            <strong>Address:</strong>
+            <%= restaurant.building %>
+            <%= restaurant.street %>
+            <%= restaurant.zipcode %>
+            <%= restaurant.boro %>
+          </p>
+           
+          <p>
+            <strong>Phone:</strong>
+            <%= restaurant.phone_num %>
+          </p>
+          <br><br>
+        </div>
+
+
+        <!-- INSPECTION RESULTS -->
+        <div class="tab-pane fade" id="profile">
+          <p>
+            <strong>Violation(s):</strong>
+            <ul>
+              <% restaurant.inspection_results.each do |violation| %>
+              <ul>
+                <%= violation %>
+              </ul>
+              <br>
+              <% end %>
+            </ul>
+          </p>
+
+
+          <p>
+            <strong>Violation Code(s):</strong>
+            <%= restaurant.violation_codes.first %>
+          </p>
+          <br><br>
+
+        </div>
     <%end%>
-  </ul>
 
+
+      <div class="tab-pane fade" id="map">
+    
+        <iframe
+          width="600"
+          height="450"
+          frameborder="0" style="border:0"
+          src="https://www.google.com/maps/embed/v1/place?key=AIzaSyD6AHICy-KKBR2oipdWqk1wYu030qMeYfw&q=<%=@result.first.restaurant_name%> restaurant new york" allowfullscreen>
+        </iframe>
+
+      </div>
+
+
+        <div class="tab-pane fade" id="dropdown1">
+          <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork.</p>
+        </div>
+        <div class="tab-pane fade" id="dropdown2">
+          <p>Trust fund seitan letterpress, keytar raw denim keffiyeh etsy art party before they sold out master cleanse gluten-free squid scenester freegan cosby sweater. Fanny pack portland seitan DIY, art party locavore wolf cliche high life echo park Austin. Cred vinyl keffiyeh DIY salvia PBR, banh mi before they sold out farm-to-table VHS viral locavore cosby sweater.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
    
     
