@@ -17,8 +17,7 @@ module Adapters
              }
 
     client.search('New York', params)
-    binding.pry
+    
     end
-
   end 
 end

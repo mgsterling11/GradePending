@@ -4,19 +4,15 @@ class Search
   def self.for(search)
     search_type = ["dba", "cuisine_description", "boro", "grade", "street", "violation_code", "violation_description", "zipcode"]
     @result = ""
-
-    x=0
-    while x < search_type.length do 
-      url_string = "https://data.cityofnewyork.us/resource/9w7m-hzhe.json?$limit=50000&#{search_type[x]}=#{search}"
+    
+    search_type.each do |param|
+      url_string = "https://data.cityofnewyork.us/resource/9w7m-hzhe.json?$limit=50000&#{param}=#{search}"
       @result = self.perform_search(url_string)
-      break if @result != "[]\n"
-      x+=1
+      return @result if @result != "[]\n"
     end
-    url_string
   end
 
   def self.perform_search(url_string)
-    binding.pry
-    @result = RestClient::Request.execute(method: :get, url: url_string)
+    RestClient::Request.execute(method: :get, url: url_string)
   end
 end
