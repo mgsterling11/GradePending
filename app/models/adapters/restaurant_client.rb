@@ -50,7 +50,6 @@ module Adapters
         violation_codes = get_values(restaurant, VIOLATION_CODE)        
         zipcode = get_single_value(restaurant, ZIPCODE)                                               
         grade = get_values(restaurant, GRADE)
-        binding.pry
         Restaurant.new(boro, building, grade, cuisine_description, restaurant_name, inspection_dates, phone_num, street, violation_codes, inspection_results, zipcode)
       end
       restaurant_objects

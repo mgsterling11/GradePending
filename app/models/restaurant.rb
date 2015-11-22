@@ -1,4 +1,4 @@
-class Restaurant < ActiveRecord::Base
+class Restaurant 
 
   attr_accessor :boro, :building, :grade, :cuisine_description, :restaurant_name, :inspection_date, :phone_num, :street, :violation_codes, :inspection_results, :zipcode
 
@@ -8,7 +8,7 @@ class Restaurant < ActiveRecord::Base
     @grade = grade
     @cuisine_description = cuisine_description
     @restaurant_name = restaurant_name
-    @inspection_date = inspection_date
+    @inspection_dates = inspection_date
     @phone_num = phone_num
     @street = street
     @violation_codes = violation_codes

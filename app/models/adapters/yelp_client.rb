@@ -12,12 +12,13 @@ module Adapters
                                 token_secret: "EjPeXcCMs0cKqWXce5DN550tEJM"
                               })
 
-    params = { term: '#{search_term}',
-               category_filter: 'restaurants'
+    params = { term: "#{search_term}",
+               category_filter: 'restaurants',
+               limit: 1
              }
 
-    client.search('New York', params)
-    
+
+    client.search('New York City', params)    
     end
   end 
 end
