@@ -16,6 +16,7 @@ class Search
   end
 
   def self.perform_search(url_string)
+    binding.pry
     @result = RestClient::Request.execute(method: :get, url: url_string)
   end
 end
