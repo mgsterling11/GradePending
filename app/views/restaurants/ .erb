@@ -11,8 +11,8 @@
       <div class="results">
         <ul class="nav nav-tabs">
           <li class="active"><a href="#home" data-toggle="tab"><i class="fa fa-cutlery"></i> Overview</a></li>
-          <li><a href="#profile" data-toggle="tab"><i class="fa fa-cutlery"></i> Find this <%=@result[index].restaurant_name%> on Yelp</a></li>
-          <li><a href="#map" data-toggle="tab"><i class="fa fa-cutlery"></i> View this <%=@result[index].restaurant_name%> on Map</a></li>
+          <li><a href="#profile[index]" data-toggle="tab"><i class="fa fa-cutlery"></i> Find <%=@result[index].restaurant_name%> on Yelp</a></li>
+          <li><a href="#map" data-toggle="tab"><i class="fa fa-cutlery"></i> View <%=@result[index].restaurant_name%> on Map</a></li>
         
           <li class="dropdown">
             <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
@@ -66,7 +66,7 @@
           
           
 
-          <!-- INSPECTION RESULTS -->
+          <!-- YELP RESULTS -->
 
         <div class="tab-pane fade" id="profile[index]">
           <p>
