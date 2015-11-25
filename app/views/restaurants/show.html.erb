@@ -1,25 +1,23 @@
 <div class="show_background" style="background-image: url(<%= asset_path 'showpage.jpg' %>)" %>
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.5/lumen/bootstrap.css"></script>
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.5/lumen/bootstrap.min.css"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
  
  <div class="padding">
   <div class="results-container">
     <div class="results">
       <ul class="nav nav-tabs">
-        <li class="active"><a href="#home" data-toggle="tab">Overview</a></li>
-        <li><a href="#profile" data-toggle="tab">Inspection Results</a></li>
-        <li><a href="#map" data-toggle="tab">View Map</a></li>
+        <li class="active"><a href="#home" data-toggle="tab"><i class="fa fa-cutlery"></i> Overview</a></li>
+        <li><a href="#profile" data-toggle="tab"><i class="fa fa-cutlery"></i> Find <%=@result[0].restaurant_name%> on Yelp</a></li>
+        <li><a href="#map" data-toggle="tab"><i class="fa fa-cutlery"></i> View <%=@result[0].restaurant_name%> on Map</a></li>
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
             Inspection Results <span class="caret"></span>
           </a>
           <ul class="dropdown-menu">
-            <%binding.pry%>
-             <% @result.first.inspection_results.each do |date, result| %>
+             <% @result[0].inspection_results.each do |date, result| %>
               <ul>
-                <li><a href="<%=date%>" data-toggle="tab"><%=date%></a></li>
+                <li><a href="<%=date%>" data-toggle="tab"><i class="fa fa-cutlery"></i> <%=date%></a></li>
             <li class="divider"></li>
               </ul>
               <% end %>
@@ -29,101 +27,75 @@
       </ul>
 
 
-
-
       <!-- OVERVIEW OF RESTAURANT -->
       <div id="myTabContent" class="tab-content">
         <div class="tab-pane fade active in" id="home">
            <p>
             <strong>Name:</strong>
 
-            <%= @result.first.restaurant_name %>
+            <%= @result[0].restaurant_name %>
           </p>
           
           <p>
             <strong>Cuisine:</strong>
-            <%= @result.first.cuisine_description %>
+            <%= @result[0].cuisine_description.split('').join('')%>
           </p>
-
-
-         <!--  <p>
-            <strong>Inspection date:</strong>
-            <%#= @result.first.inspection_date[0] %>
-          </p> -->
-
 
           <p>
             <strong>Grade:</strong>
-            <%= @result.first.grade[0] %>
+            <%= @result[0].grade[0].split('').join('') %>
           </p>
 
            <p>
             <strong>Address:</strong>
-            <%= @result.first.building %>
-            <%= @result.first.street %>
-            <%= @result.first.zipcode %>
-            <%= @result.first.boro %>
+            <%= @result[0].building %>
+            <%= @result[0].street %>
+            <%= @result[0].zipcode %>
+            <%= @result[0].boro %>
           </p>
            
           <p>
             <strong>Phone:</strong>
-            <%= @result.first.phone_num %>
+            <%= @result[0].phone_num %>
           </p>
           <br><br>
         </div>
-
 
         <!-- INSPECTION RESULTS -->
 
         <div class="tab-pane fade" id="profile">
           <p>
-            <strong>Violation(s):</strong>
-            <ul>
-              <% @result.first.inspection_results.each do |violation| %>
-              <ul>
-                <%= violation %>
-              </ul>
-              <br>
-              <% end %>
-            </ul>
+            <strong>Rating:</strong> <%=@yelp.businesses[0].rating%>
           </p>
-
-
           <p>
-            <strong>Violation Code(s):</strong>
-            <%= @result.first.violation_codes.join(", ") %>
+            <strong>Review Count:</strong> <%=@yelp.businesses[0].review_count%>
           </p>
-          <br><br>
+          <p>
+            <strong>Yelp Page:</strong> <%=@yelp.businesses[0].url%>
+          </p>
+          <p>
+            <strong>Recent Review Snippet:</strong><br> <%=@yelp.businesses[0].snippet_text%>
+          </p>
+          <p>
+            For more information, visit <u><a href="<%=@yelp.businesses[0].url%>"><%=@result[0].restaurant_name%></a></u>'s Yelp Page
+          </p>
 
+          <br><br>
         </div>
 
-
+<!-- GOOGLE MAP -->
       <div class="tab-pane fade" id="map">
-    
         <iframe
           width="600"
           height="450"
           frameborder="0" style="border:0"
-          src="https://www.google.com/maps/embed/v1/place?key=AIzaSyD6AHICy-KKBR2oipdWqk1wYu030qMeYfw&q=<%=@result.first.restaurant_name%> restaurant new york city" allowfullscreen>
+          src="https://www.google.com/maps/embed/v1/place?key=AIzaSyD6AHICy-KKBR2oipdWqk1wYu030qMeYfw&q=<%=@result[0].restaurant_name%> restaurant new york city" allowfullscreen>
         </iframe>
-
       </div>
 
-
-
-
-         <% @result.first.inspection_results.each do |date, result| %>
-          <div class="tab-pane fade" id="<%=date%>">
-            <p><%= result %></p>
-         </div>
-        <% end %>
-
-
-
 <!-- YELP  INFO -->
- @yelp.businesses.first.snippet_text
-
-
+      
+      
              
       </div>
     </div>
