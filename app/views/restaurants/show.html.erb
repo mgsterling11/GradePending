@@ -10,6 +10,7 @@
         <li class="active"><a href="#home" data-toggle="tab"><i class="fa fa-cutlery"></i> Overview</a></li>
         <li><a href="#profile" data-toggle="tab"><i class="fa fa-cutlery"></i> Find <%=@result[0].restaurant_name%> on Yelp</a></li>
         <li><a href="#map" data-toggle="tab"><i class="fa fa-cutlery"></i> View <%=@result[0].restaurant_name%> on Map</a></li>
+      
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
             Inspection Results <span class="caret"></span>
@@ -60,28 +61,28 @@
           </p>
           <br><br>
         </div>
+        
+        
 
         <!-- INSPECTION RESULTS -->
 
-        <div class="tab-pane fade" id="profile">
-          <p>
-            <strong>Rating:</strong> <%=@yelp.businesses[0].rating%>
-          </p>
-          <p>
-            <strong>Review Count:</strong> <%=@yelp.businesses[0].review_count%>
-          </p>
-          <p>
-            <strong>Yelp Page:</strong> <%=@yelp.businesses[0].url%>
-          </p>
-          <p>
-            <strong>Recent Review Snippet:</strong><br> <%=@yelp.businesses[0].snippet_text%>
-          </p>
-          <p>
-            For more information, visit <u><a href="<%=@yelp.businesses[0].url%>"><%=@result[0].restaurant_name%></a></u>'s Yelp Page
-          </p>
+      <div class="tab-pane fade" id="profile">
+        <p>
+          <strong>Rating:</strong> <%=@yelp.businesses[0].rating%> stars
+        </p>
+        <p>
+          <strong>Review Count:</strong> <%=@yelp.businesses[0].review_count%> 
+        </p>
+        <p>
+          <strong>Recent Review Snippet:</strong><br> <%=@yelp.businesses[0].snippet_text%>
+        </p>
+        <p>
+          For more information, visit <u><a href="<%=@yelp.businesses[0].url%>"><%=@result[0].restaurant_name%></a></u>'s Yelp Page
+        </p>
 
-          <br><br>
-        </div>
+        <br><br>
+      </div>
+
 
 <!-- GOOGLE MAP -->
       <div class="tab-pane fade" id="map">
@@ -93,13 +94,13 @@
         </iframe>
       </div>
 
-<!-- YELP  INFO -->
-      
-      
-             
       </div>
     </div>
   </div>
 </div>
 
 
+
+        
+         
+              
