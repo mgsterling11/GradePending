@@ -10,21 +10,22 @@
         <li class="active"><a href="#home" data-toggle="tab"><i class="fa fa-cutlery"></i> Overview</a></li>
         <li><a href="#profile" data-toggle="tab"><i class="fa fa-cutlery"></i> Find <%=@result[0].restaurant_name%> on Yelp</a></li>
         <li><a href="#map" data-toggle="tab"><i class="fa fa-cutlery"></i> View <%=@result[0].restaurant_name%> on Map</a></li>
+        <li><a href="#inspection" data-toggle="tab"><i class="fa fa-cutlery"></i> View <%=@result[0].restaurant_name%> Inspection Results</a></li>
       
-        <li class="dropdown">
+        <!-- <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
             Inspection Results <span class="caret"></span>
           </a>
           <ul class="dropdown-menu">
-             <% @result[0].inspection_results.each do |date, result| %>
+             <%# @result[0].inspection_results.each do |date, result| %>
               <ul>
-                <li><a href="<%=date%>" data-toggle="tab"><i class="fa fa-cutlery"></i> <%=date%></a></li>
+                <li><a href="<%#=date%>" data-toggle="tab"><i class="fa fa-cutlery"></i> <%#=date%></a></li>
             <li class="divider"></li>
               </ul>
-              <% end %>
+              <%# end %>
               <br>
           </ul>
-        </li>
+        </li> -->
       </ul>
 
 
@@ -62,6 +63,39 @@
           <br><br>
         </div>
 
+
+      <div class="tab-pane fade" id="inspection">
+        <% @result.each do |restaurant| %>
+          <% restaurant.inspection_results.each do |inspection_date, citation| %>
+
+            <strong>INSPECTION DATE: <%=inspection_date%> </strong><br><br>
+            
+            <strong>Violation(s):</strong>
+              <ul>
+                <% citation.each do |text| %>
+                  <i class="fa fa-cutlery"></i> <%=text%><br><br>
+                  <%end%>
+              </ul>
+          <br>
+            <% end %>
+          <% end %>
+        </ul>
+      </p>
+
+
+
+
+
+
+      <p>
+        <strong>Violation Code(s):</strong>
+        <%= @result.first.violation_codes.join(", ") %>
+      </p>
+      <br><br>
+
+
+        <br><br>
+      </div>
         
 
         <!-- YELP RESULTS -->
@@ -84,6 +118,12 @@
       </div>
 
 
+  
+     
+     
+
+
+
 <!-- GOOGLE MAP -->
       <div class="tab-pane fade" id="map">
         <iframe
@@ -98,9 +138,3 @@
     </div>
   </div>
 </div>
-
-
-
-        
-         
-              
