@@ -41,6 +41,7 @@ module Adapters
       restaurant_objects = sorted_restaurants.map do |restaurant|
         inspection_dates = inspection_date(restaurant)
         inspection_results = sort_inspections_by_date(restaurant, inspection_dates)
+        grade = sort_restaurant_grades(restaurant, inspection_dates)
         boro = get_single_value(restaurant, BORO)
         building = get_single_value(restaurant, BUILDING_NUMBER)                                         
         cuisine_description = get_values(restaurant, CUISINE_DESCRIPTION)                                               
@@ -49,7 +50,6 @@ module Adapters
         street = get_street(restaurant)                                               
         violation_codes = get_values(restaurant, VIOLATION_CODE)        
         zipcode = get_single_value(restaurant, ZIPCODE)                                               
-        grade = get_values(restaurant, GRADE)
         Restaurant.new(boro, building, grade, cuisine_description, restaurant_name, inspection_dates, phone_num, street, violation_codes, inspection_results, zipcode)
       end
       restaurant_objects
@@ -68,6 +68,14 @@ module Adapters
         hash[date] = restaurant.map do |r|
           r[INSPECTION_RESULTS] if Time.parse(r[INSPECTION_DATE]) == date
         end.compact
+      end
+    end
+
+    def sort_restaurant_grades(restaurant, inspection_dates)
+      inspection_dates.each_with_object({}) do |date, hash| 
+        hash[date] = restaurant.map do |r|
+          r[GRADE] if Time.parse(r[INSPECTION_DATE]) == date
+        end.compact.uniq
       end
     end
 

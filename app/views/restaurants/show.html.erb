@@ -44,10 +44,13 @@
             <strong>Cuisine:</strong>
             <%= @result[0].cuisine_description.split('').join('')%>
           </p>
-
+          
           <p>
-            <strong>Grade:</strong>
-            <%= @result[0].grade[0].split('').join('') %>
+            <strong>Inspection Grade(s):</strong><br>
+              <% @result[0].grade.each do |date, grade|%>
+                Inspection Date: <%=InspectionDateViewObject.new(date).display%>, Grade: <%=grade.split('').join('')%>
+                <br><br>
+              <%end%>
           </p>
 
            <p>
@@ -101,7 +104,7 @@
             <% formatted_date = InspectionDateViewObject.new(inspection_date).display %>
         <div class="tab-pane fade" id="<%=formatted_date%>">
             <strong>INSPECTION DATE: <%=formatted_date%> </strong><br><br>
-            
+
             <strong>Violation(s):</strong>
               <ul>
                 <% citation.each do |text| %>
@@ -119,15 +122,3 @@
  </div>
 </div>
 
-
-
-      <p>
-        <strong>Violation Code(s):</strong>
-        <%= @result.first.violation_codes.join(", ") %>
-      </p>
-      <br><br>
-
-
-        <br><br>
-      </div>
-        
