@@ -46,14 +46,6 @@
           </p>
           
           <p>
-            <strong>Inspection Grade(s):</strong><br>
-              <% @result[0].grade.each do |date, grade|%>
-                Inspection Date: <%=InspectionDateViewObject.new(date).display%>, Grade: <%=grade.split('').join('')%>
-                <br><br>
-              <%end%>
-          </p>
-
-           <p>
             <strong>Address:</strong>
             <%= @result[0].building %>
             <%= @result[0].street %>
@@ -65,7 +57,17 @@
             <strong>Phone:</strong>
             <%= @result[0].phone_num %>
           </p>
-          <br><br>
+          <br>
+          
+          <p>
+            <strong>Inspection Grade(s):</strong><br>
+              <% @result[0].grade.each do |date, grade|%>
+                Inspection Date: <%=InspectionDateViewObject.new(date).display%>, Grade: <%=grade.split('').join('')%>
+                <br><br>
+              <%end%>
+          </p>
+
+          <br>
         </div>
 
 
