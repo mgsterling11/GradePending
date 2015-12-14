@@ -35,6 +35,7 @@ gem 'twitter-bootswatch-rails', '~> 3.3.4'
 gem 'twitter-bootswatch-rails-helpers'
 gem 'twitter-bootswatch-rails-fontawesome', '~> 4.3'
 gem 'therubyracer'
+gem 'pg'
 
 # gem 'sqlite3'
 # Use ActiveModel has_secure_password
@@ -48,6 +49,7 @@ gem 'therubyracer'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'pg'
   gem 'byebug'
 end
 
