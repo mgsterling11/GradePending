@@ -18,8 +18,9 @@
           <ul class="dropdown-menu">
             <% @result.each do |restaurant| %>
               <% restaurant.inspection_results.each do |inspection_date, citation| %>
+                <% formatted_date = InspectionDateViewObject.new(inspection_date).display %>
               <ul>
-                <li><a href="#<%=inspection_date%>" data-toggle="tab"><i class="fa fa-cutlery"></i> <%=inspection_date%></a></li>
+                <li><a href="#<%=formatted_date%>" data-toggle="tab"><i class="fa fa-cutlery"></i> <%=formatted_date%></a></li>
                 <li class="divider"></li>
               </ul>
                 <%end%>
@@ -97,8 +98,9 @@
         <!-- INSPECTION RESULTS -->
         <% @result.each do |restaurant| %>
           <% restaurant.inspection_results.each do |inspection_date, citation| %>
-        <div class="tab-pane fade" id="<%=inspection_date%>">
-            <strong>INSPECTION DATE: <%=inspection_date%> </strong><br><br>
+            <% formatted_date = InspectionDateViewObject.new(inspection_date).display %>
+        <div class="tab-pane fade" id="<%=formatted_date%>">
+            <strong>INSPECTION DATE: <%=formatted_date%> </strong><br><br>
             
             <strong>Violation(s):</strong>
               <ul>
